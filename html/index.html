@@ -46,7 +46,7 @@
                 margin: 1rem auto;
             }
             .searchbox {
-                padding: 1.5rem;
+                padding: 1.5rem 1.5rem 0.4rem 1.5rem;
                 border-radius: 0.5rem;
                 background-color: #93D6F2;
                 font-size: 1.4em;
@@ -55,6 +55,7 @@
                 float: left;
                 padding: 0.45rem 0.8rem 0 0.5rem;
                 color: #fff;
+                font-weight: bold;
             }
             .searchbox label.brief {
                 max-width: 30rem;
@@ -71,6 +72,13 @@
                 border-radius: 0.3rem;
                 border: 1px Solid #fff;
             }
+            .searchbox .note {
+                display: inline-block;
+                width: 100%;
+                color: #fff;
+                font-size: .6em;
+                text-align: center;
+            }
             .index {
                 margin: 1rem auto;
                 text-align: center;
@@ -85,9 +93,6 @@
             }
             .index a:hover {
                 color: #000;
-            }
-            .body-placeholder {
-                height: 8rem;
             }
             .body {
                 width: 1100px;
@@ -109,8 +114,6 @@
                 display: block;
                 position: relative;
                 width: 0;
-                height: 10.5rem;
-                margin-top: -10.5rem
             }
             .caption a span {
                 display: block;
@@ -195,6 +198,8 @@
                 .searchbox label.brief { display: inline-block; }
                 .header,.body { width: 400px;}
                 .constant .name { width: 120px; }
+                .body-placeholder { height: 8.3rem; }
+                .caption a:before { height: 10.8rem; margin-top: -10.8rem; }
             }
             @media (min-width:768px) {
                 .searchbox { font-size: 1.4em; }
@@ -202,6 +207,8 @@
                 .searchbox label.brief { display: none; }
                 .header,.body { width: 700px;}
                 .constant .value { width: 200px; }
+                .body-placeholder { height: 9.4rem; }
+                .caption a:before { height: 11.9rem; margin-top: -11.9rem; }
             }
             @media (min-width:992px) {
                 .header.body { width: 900px;}
@@ -209,6 +216,8 @@
             @media (min-width:1200px) {
                 .header,.body { width: 1100px;}
                 .constant .value { width: 280px; }
+                .body-placeholder { height: 8rem; }
+                .caption a:before { height: 10.5rem; margin-top: -10.5rem; }
             }
         </style>
     </head>
@@ -220,6 +229,7 @@
                     <label for="search" class="full">Where is my AEM constant?</label>
                     <div>
                         <input type="text" id="search" placeholder="e.g.: jcr:content" onkeyup="processFilter()">
+                        <span class="note">Start typing to see only values with begin with the given characters. Clear the box to see the full list again</span>
                     </div>
                 </div>
                 <div class="index">
