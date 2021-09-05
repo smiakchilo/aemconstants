@@ -39,7 +39,7 @@ public class Main {
 
         String result = new HtmlBuilder(registry).build();
         if (!result.isEmpty()) {
-            Path filePath = Paths.get("html","index.html").toAbsolutePath();
+            Path filePath = Paths.get("docs","index.html").toAbsolutePath();
             Files.deleteIfExists(filePath);
             File newFile = Files.createFile(filePath).toFile();
             try (FileOutputStream outputStream = new FileOutputStream(newFile)) {
