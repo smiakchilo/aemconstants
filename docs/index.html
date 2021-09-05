@@ -23,8 +23,11 @@
                     document.querySelectorAll('.search-hidden').forEach(elt => elt.classList.remove('search-hidden'));
                     return;
                 }
+                const selector = /^\*.+/.test(searchable)
+                    ? '[data-val*="' + searchable.substring(1) + '"]'
+                    : '[data-val^="' + searchable + '"]';
                 document.querySelectorAll('.section,.constant').forEach(elt => elt.classList.add('search-hidden'));
-                document.querySelectorAll('[data-val^="' + searchable + '"]').forEach(elt => {
+                document.querySelectorAll(selector).forEach(elt => {
                     elt.classList.remove('search-hidden');
                     elt.closest('.section').classList.remove('search-hidden');
                 });
@@ -47,7 +50,7 @@
                 margin: 1rem auto;
             }
             .searchbox {
-                padding: 1.5rem 1.5rem 0.4rem 1.5rem;
+                padding: 1.5rem 1.5rem 0.3rem 1.5rem;
                 border-radius: 0.5rem;
                 background-color: #93D6F2;
                 font-size: 1.4em;
@@ -79,6 +82,7 @@
                 color: #fff;
                 font-size: .6em;
                 text-align: center;
+                margin-top: 0.2rem;
             }
             .index {
                 margin: 1rem auto;
@@ -202,8 +206,8 @@
                 .searchbox label.brief { display: inline-block; }
                 .header,.body { width: 400px;}
                 .constant .name { width: 120px; }
-                .body-placeholder { height: 8.3rem; }
-                .caption a:before { height: 10.8rem; margin-top: -10.8rem; }
+                .body-placeholder { height: 8.4rem; }
+                .caption a:before { height: 10.9rem; margin-top: -10.9rem; }
             }
             @media (min-width:768px) {
                 .searchbox { font-size: 1.4em; }
@@ -211,8 +215,8 @@
                 .searchbox label.brief { display: none; }
                 .header,.body { width: 700px;}
                 .constant .value { width: 200px; }
-                .body-placeholder { height: 9.4rem; }
-                .caption a:before { height: 11.9rem; margin-top: -11.9rem; }
+                .body-placeholder { height: 9.5rem; }
+                .caption a:before { height: 12rem; margin-top: -12rem; }
             }
             @media (min-width:992px) {
                 .header.body { width: 900px;}
@@ -233,7 +237,7 @@
                     <label for="search" class="full">Where is my AEM constant?</label>
                     <div>
                         <input type="text" id="search" placeholder="e.g.: jcr:content" onkeyup="processFilter()">
-                        <span class="note">Start typing to see only values with begin with the given characters. Clear the box to see the full list again</span>
+                        <span class="note">Type to see values that <b><i>begin with</i></b> the given text. Start with <b>*</b> to see values that <b><i>contain</i></b> the text</span>
                     </div>
                 </div>
                 <div class="index">
