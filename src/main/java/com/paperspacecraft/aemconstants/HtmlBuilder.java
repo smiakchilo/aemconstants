@@ -83,7 +83,10 @@ class HtmlBuilder {
 
     private String buildForConstant(String value, List<ClassFieldInfo> sources) {
         StringBuilder optionBuilder = new StringBuilder();
-        sources.forEach(source -> optionBuilder.append(populateTemplate(sectionOptionTemplate, source.getValueMap())));
+        sources
+                .stream()
+                .sorted()
+                .forEach(source -> optionBuilder.append(populateTemplate(sectionOptionTemplate, source.getValueMap())));
         if (optionBuilder.length() == 0) {
             return StringUtils.EMPTY;
         }
